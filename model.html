@@ -168,16 +168,14 @@ function animate()
 
 	update();
 	
+	// Check if mesh0 is loaded before applying animation
 	if (mesh0) {
-		mesh0.rotation.y += 0.02;  // Rotation
-		mesh0.position.y = 0.25 + Math.sin(totalTime * 2) * 0.05; // Floating up and down
-		mesh0.position.z = Math.sin(totalTime) * 0.2;  // Forward-backward movement
-		let scaleFactor = 0.25 + Math.sin(totalTime * 2) * 0.02;
-		mesh0.scale.set(scaleFactor, scaleFactor, scaleFactor); // Pulsing effect
+		mesh0.rotation.y += 0.02; // Rotates the model around Y-axis
 	}
 
 	render();
 }
+
 
 
 </script>
