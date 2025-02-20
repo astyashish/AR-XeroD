@@ -126,13 +126,13 @@ function initialize()
 	function onError(xhr) { console.log( 'An error happened' ); }
 	
 	new THREE.MTLLoader()
-		.setPath( 'models/' )
-		.load( 'fish-2.mtl', function ( materials ) {
+		.setPath( 'models/Killer Whale' )
+		.load( 'kiillerwhaleobj.mtl', function ( materials ) {
 			materials.preload();
 			new THREE.OBJLoader()
 				.setMaterials( materials )
-				.setPath( 'models/' )
-				.load( 'fish-2.obj', function ( group ) {
+				.setPath( 'models/Killer Whale' )
+				.load( 'kiillerwhaleobj.obj', function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
 					mesh0.position.y = 0.25;
