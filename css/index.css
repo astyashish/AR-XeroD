@@ -1,133 +1,88 @@
-body 
-{
-	background-color: #eeeeee;
-	background-image: url("../images/pixels.png");
-	background-repeat: repeat;      /* repeat, no-repeat */
-	background-attachment: fixed;   /* scroll, fixed */
-	background-position: top left;  /* for no-repeat setting: top/bottom, left/right */
-	margin: 2% 5% 0% 5%;            /* top, left, bottom, right or TRBL */
-	
-	font-family: Georgia, Serif;	/* list font names in order of preference */
-	font-weight: normal;            /* normal, bold */
-	font-style: normal;             /* normal, italic */
-	font-variant: normal;           /* normal, small-caps */
-	font-size: 16px;                /* font size */
-	color: #000000;                 /* hexadecimal RGB color code */
-	text-decoration: none;          /* none, underline, overline, line-through */
-	text-align: left;               /* left, right, center, justify */
+body {
+    background-color: #d4f9ff; /* Light background for a clean look */
+    background-repeat: repeat; /* Keep the pixel background */
+    background-attachment: fixed; /* Fixed background */
+    background-position: top left; /* Positioning */
+    margin: 0% 0%; /* Margin for the body */
+    
+
+	font-family: 'Agency FB', sans-serif; /* Fallback to sans-serif if not available */
+	font-weight: normal; /* Normal font weight */
+    font-size: 20px; /* Base font size */
+    color: #333; /* Dark gray text for better readability */
+    text-decoration: none; /* No text decoration */
+    text-align: left; /* Left-aligned text */
 }
 
-.fancy
-{
-	min-height: 150px;
-	/* next two lines for elder IE compatibility */
-	height: auto !important; 
-	height: 150px; 
-	
-	/* Background color and gradients */
-	background: #eeeeee;
-	background: -moz-linear-gradient(top, #ffffff, #cccccc);
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#cccccc));
-	/* really nifty translucence */
-	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8) );
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from( rgba(255, 255, 255, 0.8) ), to( rgba(200, 200, 200, 0.8) ));
-	
-	/* Rounded corners */
-	-moz-border-radius: 15px 15px 15px 15px;
-	-webkit-border-radius: 15px 15px 15px 15px;
-	border-radius: 15px 15px 15px 15px;
+.container {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    justify-content: space-between; /* Space between columns */
+}
+
+.fancy {
+    flex: 1 1 calc(33.333% - 20px); /* Three columns with space between */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    min-height: 150px; /* Minimum height */
+    height: auto !important; /* Auto height for flexibility */
+    
+    /* Background color and gradients */
+    background: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+    border: 1px solid #ddd; /* Light border for separation */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    
+    /* Rounded corners */
+    border-radius: 15px; /* Unified border radius */
+    padding: 10px; /* Padding for content */
+    margin: 10px; /* Margin for spacing */
 }
 
 /* Page text links */
-a 
-{
-	font-size: 20px;
-	font-weight: bold;
-	font-variantx: small-caps;
-	color:#00c;
-	text-shadow: 1px 1px 0px #aaa;
-	margin: 13px 0px 0px 0px;
-	text-decoration: none;
-	
-	-webkit-transition: all 300ms ease-in-out;
-	-moz-transition: all 300ms ease-in-out;
-	-o-transition: all 300ms ease-in-out;
-	-ms-transition: all 300ms ease-in-out;
-	transition: all 300ms ease-in-out; 
+a {
+    font-size: 18px; /* Slightly smaller font size */
+    font-weight: bold; /* Bold links */
+    color: #007BFF; /* Bootstrap primary color */
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5); /* Light shadow for depth */
+    margin: 10px 0; /* Margin for spacing */
+    text-decoration: none; /* No underline */
+    
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
 }
 
-.toc
-{
-	font-size: 16px;
+.toc {
+    font-size: 18px; /* Font size for table of contents */
 }
 
-a:hover 
-{
-	color:#c00;
-	/*text-shadow: 1px 1px 0px #f00;
-	/* gradual change */
-	-webkit-transition: all 300ms ease-in-out;
-	-moz-transition: all 300ms ease-in-out;
-	-o-transition: all 300ms ease-in-out;
-	-ms-transition: all 300ms ease-in-out;
-	transition: all 300ms ease-in-out; 
+a:hover {
+    color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect */
 }
 
-.superText
-{
-	color: #000;
-	text-shadow: 1px 1px 0px #aaa;
+.superText {
+    color: #555; /* Medium gray for text */
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5); /* Light shadow for depth */
 }
 
-a .superImage
-{  
-	height: 150px;
-	width: 225px;
-	border: 1px solid #000000;
-	margin: 0px 20px 0px 0px;
-	float:left;
-	
-	
-	/* Rounded corners */
-	-moz-border-radius: 15px 15px 15px 15px;
-	-webkit-border-radius: 15px 15px 15px 15px;
-	border-radius: 15px 15px 15px 15px;
-	
-	position: relative; 
-	
-	-webkit-transition: all 300ms ease-in-out;
-	-moz-transition: all 300ms ease-in-out;
-	-o-transition: all 300ms ease-in-out;
-	-ms-transition: all 300ms ease-in-out;
-	transition: all 300ms ease-in-out; 
-}  
+a .superImage {
+    height: auto; /* Maintain original height */
+    width: 100%; /* Full width for responsiveness */
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    margin: 0 0 10px 0; /* Margin for spacing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
 
-a:hover .superImage
-{  
-	top: -10px;  
-	
-	/* fallback on standard opaque colors */
-	-moz-box-shadow: 10px 10px 5px #888;
-	-webkit-box-shadow: 10px 10px 5px #888;
-	box-shadow: 10px 10px 5px #888;
-	/* translucent: the way shadows should be */
-	-moz-box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-	
-	-webkit-transition: all 300ms ease-in-out;
-	-moz-transition: all 300ms ease-in-out;
-	-o-transition: all 300ms ease-in-out;
-	-ms-transition: all 300ms ease-in-out;
-	transition: all 300ms ease-in-out;
-}  
+a:hover .superImage {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
 
-.bigTitle
-{
-	font-size: 32px;
-	font-weight: bold;
-	font-variantx: small-caps;
-	color:#004;
-	text-align: center;
-	text-shadow: -1px -1px 2px #fff, 1px 1px 3px #000;	
+.bigTitle {
+    font-size: 36px; /* Larger title size */
+    font-weight: bold; /* Bold title */
+    color: #004; /* Dark blue color */
+    text-align: center; /* Centered title */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    margin-bottom: 10px; /* Margin below title */
 }
