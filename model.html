@@ -138,7 +138,10 @@ function initialize()
 					mesh0.position.y = 0.25;
 					mesh0.scale.set(0.25,0.25,0.25);
 					markerRoot1.add(mesh0);
+				// Start animation only after the model is loaded
+				animate();
 				}, onProgress, onError );
+				
 		});
 }
 
