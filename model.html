@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>AR 3D Model Loader</title>
+    <title>AR User-Based 3D Model Loader</title>
     <!-- Include Three.js library -->
     <script src='js/three.js'></script>
     <script src='js/OBJLoader.js'></script>
@@ -87,7 +87,7 @@
 
         // Load User Data from CSV
         function loadUserData() {
-            fetch("user_data.csv")
+            fetch("data.csv")
                 .then(response => response.text())
                 .then(text => {
                     let lines = text.split("\n").slice(1); // Skip the header line
