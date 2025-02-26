@@ -15,13 +15,28 @@
     <script src="threex/threex-artoolkitcontext.js"></script>
     <script src="threex/threex-arbasecontrols.js"></script>
     <script src="threex/threex-armarkercontrols.js"></script>
+    <style>
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body style='margin: 0px; overflow: hidden; font-family: Monospace;'>
+    <div id="info">No marker detected.</div>
     <script>
         var scene, camera, renderer, clock, deltaTime, totalTime;
         var arToolkitSource, arToolkitContext;
         var markers = {}; // Store user markers
         var userData = {}; // Store user data
+        var detectedMarker = null; // Track the currently detected marker
+        var infoDiv = document.getElementById("info");
 
         initialize();
         loadUserData(); // Load user data from CSV
@@ -79,7 +94,10 @@
                     lines.forEach(line => {
                         let [user_id, patt_file, model_file] = line.split(",");
                         if (user_id && patt_file && model_file) {
-                            userData[patt_file.trim()] = model_file.trim();
+                            userData[patt_file.trim()] = {
+                                userId: user_id.trim(),
+                                modelFile: model_file.trim()
+                            };
                             createMarker(patt_file.trim(), model_file.trim());
                         }
                     });
@@ -95,7 +113,13 @@
             // Add AR Marker Controls
             new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
                 type: "pattern",
-                patternUrl: pattFile
+                patternUrl: pattFile,
+                changeCallback: (marker) => {
+                    if (marker.visible) {
+                        detectedMarker = pattFile; // Track the detected marker
+                        updateInfo(); // Update the displayed info
+                    }
+                }
             });
 
             markers[pattFile] = markerRoot;
@@ -131,6 +155,16 @@
         // Render the scene
         function render() {
             renderer.render(scene, camera);
+        }
+
+        // Update the displayed info
+        function updateInfo() {
+            if (detectedMarker && userData[detectedMarker]) {
+                let user = userData[detectedMarker];
+                infoDiv.innerHTML = `User: ${user.userId}<br>Model: ${user.modelFile}`;
+            } else {
+                infoDiv.innerHTML = "No marker detected.";
+            }
         }
 
         // Animation loop
