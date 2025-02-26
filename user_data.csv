@@ -1,4 +1,4 @@
 user_id,patt_file,model_file
-user1,data/user1.patt,models/kiillerwhale.obj
-user2,data/user2.patt,models/lion.obj
-user3,data/user3.patt,models/tiger.obj
+user1,data/user1.patt,kiillerwhale.obj
+user2,data/user2.patt,lion.obj
+user3,data/user3.patt,tiger.obj
