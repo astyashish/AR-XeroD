@@ -87,7 +87,7 @@
 
         // Load User Data from CSV
         function loadUserData() {
-            fetch("data.csv")
+            fetch("user_data.csv")
                 .then(response => response.text())
                 .then(text => {
                     let lines = text.split("\n").slice(1); // Skip the header line
