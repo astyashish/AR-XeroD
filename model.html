@@ -66,7 +66,7 @@ function initialize() {
 
 // Load user data from CSV
 async function loadUserData() {
-	let response = await fetch("users.csv");
+	let response = await fetch("data.csv");
 	let text = await response.text();
 	let lines = text.split("\n");
 
