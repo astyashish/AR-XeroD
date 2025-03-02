@@ -113,13 +113,18 @@ function initialize()
 	for (let i = 0; i < 7; i++) {
     let markerRoot = new THREE.Group();
     scene.add(markerRoot);
-    
+
     let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
         type: 'pattern',
         patternUrl: "data/" + patternArray[i] + ".patt",
+        changeCallback: function (marker) {
+            if (marker.visible) {
+                updateInfo(patternArray[i]); // Update user info when marker is detected
+            }
+        }
     });
 
-    load3DModel(modelArray[i], markerRoot); // Load the corresponding 3D model
+    load3DModel(modelArray[i], markerRoot);
 }
 
 // Function to load and display a 3D model
@@ -139,6 +144,16 @@ function load3DModel(modelPath, markerRoot) {
                     markerRoot.add(model);
                 });
         });
+}
+// Function to update displayed user info
+function updateInfo(detectedPattern) {
+    let infoDiv = document.getElementById("info");
+    if (userData[detectedPattern]) {
+        let user = userData[detectedPattern];
+        infoDiv.innerHTML = `User: ${user.userId}<br>Model: ${user.modelFile}`;
+    } else {
+        infoDiv.innerHTML = "No marker detected.";
+    }
 }
 
 }
