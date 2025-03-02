@@ -3,10 +3,14 @@
 
 newmtl cream_Material
 Ns 250.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000   # Ambient color
+Kd 0.9 0.8 0.7                 # Base Color (Cream-like)
+Ks 1.000000 1.000000 1.000000   # Specular color (High for metallic effect)
+Ke 0.000000 0.000000 0.000000   # Emission (Not used here)
 Ni 1.500000
 d 1.000000
-illum 2
+illum 2                         # Uses diffuse and specular
+
+# Additional settings for metallic effect
+map_Kd Image_0.jpg        # Base Color Texture (if available)
+map_Ks Image_1.jpg     # Metallic Map (if available)
