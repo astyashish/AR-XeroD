@@ -126,12 +126,12 @@ function initialize()
 function load3DModel(modelPath, markerRoot) {
     new THREE.MTLLoader()
         .setPath("models/")
-        .load(modelPath.replace(".obj", ".mtl"), function (materials) {
+        .load(modelPath +".mtl", function (materials) {
             materials.preload();
             new THREE.OBJLoader()
                 .setMaterials(materials)
                 .setPath("models/")
-                .load(modelPath, function (group) {
+                .load(modelPath + ".obj", function (group) {
                     let model = group.children[0];
                     model.material.side = THREE.DoubleSide;
                     model.position.y = 0.25;
