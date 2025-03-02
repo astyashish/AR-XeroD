@@ -1,0 +1,133 @@
+/* Modern Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles */
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: #1e1e2f; /* Dark background */
+    color: #ffffff; /* White text */
+}
+
+/* Info Panel */
+#info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Debug Panel */
+#debug-panel {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    backdrop-filter: blur(10px); /* Blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#debug-panel h5 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Input Fields */
+.input-field {
+    margin-bottom: 15px;
+    padding-left: 100px;
+    text-align: center;
+}
+/* Style for input fields */
+.input-field input[type=number] {
+  background-color: black !important; /* Dark background */
+  color: white !important; /* White text */
+  height: 2rem !important; /* Adjust height */
+  font-size: 18px !important; /* Increase font size */
+  text-align: center; /* Center-align text */
+  width: 50px; /* Ensure full width */
+}
+
+
+.input-field label {
+    display: block;
+    padding: 1px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.input-field input {
+    width: 30px;
+    height: 50%;
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-width: 30%;
+    border-radius: 15px;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-field input:focus {
+    border-color: #6a5acd; /* Purple border on focus */
+}
+
+/* Buttons */
+button {
+    background: #6a5acd; /* Purple button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #5a4aad; /* Darker purple on hover */
+}
+
+/* Debug Button */
+#debug-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #6a5acd; /* Purple button */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+#debug-button:hover {
+    background: #5a4aad; /* Darker purple on hover */
+}
+
+#debug-button i {
+    font-size: 24px;
+    color: #ffffff;
+}
