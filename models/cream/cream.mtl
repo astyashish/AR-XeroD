@@ -13,4 +13,3 @@ illum 2                         # Uses diffuse and specular
 
 # Additional settings for metallic effect
 map_Kd Image_0.jpg        # Base Color Texture (if available)
-map_Ks Image_1.jpg     # Metallic Map (if available)
