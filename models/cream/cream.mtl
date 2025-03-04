@@ -11,5 +11,3 @@ Ni 1.500000
 d 1.000000
 illum 2                         # Uses diffuse and specular
 
-# Additional settings for metallic effect
-map_Kd Image_0.jpg        # Base Color Texture (if available)
