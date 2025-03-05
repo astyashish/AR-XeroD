@@ -127,60 +127,65 @@
             setupMarkers();
         }
 
-        // Setup markers and load 3D models
         function setupMarkers() {
-            let patternArray = ["user2", "user1", "letterC", "letterD", "letterF", "kanji", "hiro"];
-            let modelArray = ["kiillerwhale", "cream/cream", "tiger", "model4", "model5", "model6", "model7"];
+        let markersDict = {
+            "user2": "kiillerwhale",
+            "user1": "cream/cream",
+            "letterC": "tiger",
+            "letterD": "model4",
+            "letterF": "model5",
+            "kanji": "model6",
+            "hiro": "model7"
+        };
 
-            for (let i = 0; i < patternArray.length; i++) {
-                let markerRoot = new THREE.Group();
-                scene.add(markerRoot);
+        for (let pattern in markersDict) {
+            let markerRoot = new THREE.Group();
+            scene.add(markerRoot);
 
-                new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
-                    type: 'pattern',
-                    patternUrl: "data/" + patternArray[i] + ".patt",
-                    changeCallback: (marker) => {
-                        if (marker.visible) {
-                            detectedMarker = patternArray[i];
-
-                        }
+            new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+                type: 'pattern',
+                patternUrl: `data/${pattern}.patt`,
+                changeCallback: (marker) => {
+                    if (marker.visible) {
+                        detectedMarker = pattern;
                     }
-                });
-								updateInfo(detectedMarker);
-								load3DModel(modelArray[i], markerRoot);
-            }
-        }
+                }
+            });
 
-        // Load 3D Model for User
-        function load3DModel(modelPath, markerRoot) {
-            new THREE.MTLLoader()
-                .setPath("models/")
-                .load(modelPath + ".mtl", function (materials) {
-                    materials.preload();
-                    new THREE.OBJLoader()
-                        .setMaterials(materials)
-                        .setPath("models/")
-                        .load(modelPath + ".obj", function (group) {
-
-                            currentModel = group.children[0]; // Store the new model
-                            currentModel.material.side = THREE.DoubleSide;
-                            markerRoot.add(currentModel);
-                        }, undefined, (error) => {
-                            console.error("Error loading 3D model:", error);
-                        });
-                }, undefined, (error) => {
-                    console.error("Error loading material:", error);
-                });
+            updateInfo(detectedMarker);
+            load3DModel(markersDict[pattern], markerRoot);
         }
+    }
 
-        // Update the displayed info
-        function updateInfo(detectedPattern) {
-            if (detectedPattern) {
-                infoDiv.innerHTML = `Marker Detected: ${detectedPattern}`;
-            } else {
-                infoDiv.innerHTML = "No marker detected.";
-            }
+    // Load 3D Model for User
+    function load3DModel(modelPath, markerRoot) {
+        new THREE.MTLLoader()
+            .setPath("models/")
+            .load(modelPath + ".mtl", function (materials) {
+                materials.preload();
+                new THREE.OBJLoader()
+                    .setMaterials(materials)
+                    .setPath("models/")
+                    .load(modelPath + ".obj", function (group) {
+                        currentModel = group.children[0]; // Store the new model
+                        currentModel.material.side = THREE.DoubleSide;
+                        markerRoot.add(currentModel);
+                    }, undefined, (error) => {
+                        console.error("Error loading 3D model:", error);
+                    });
+            }, undefined, (error) => {
+                console.error("Error loading material:", error);
+            });
+    }
+
+    // Update the displayed info
+    function updateInfo(detectedPattern) {
+        if (detectedPattern) {
+            infoDiv.innerHTML = `Marker Detected: ${detectedPattern}`;
+        } else {
+            infoDiv.innerHTML = "No marker detected.";
         }
+    }
 
         // Toggle debug panel visibility
         function toggleDebugPanel() {
